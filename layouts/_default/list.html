@@ -1,0 +1,30 @@
+{{ define "main" }}
+<main class="px-4 py-12 mx-auto max-w-screen-xl sm:py-16">
+    <div class="mx-auto max-w-3xl">
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+            {{ .Title }}
+        </h1>
+        {{ with .Params.description }}
+        <p class="mt-4 text-xl text-gray-600 dark:text-gray-400">{{ . }}</p>
+        {{ end }}
+        {{ with .Content }}
+        <div class="mt-8 prose dark:prose-invert prose-2xl">
+            {{ . }}
+        </div>
+        {{ end }}
+        {{ $pages := .Pages }}
+        {{ if $pages }}
+        <div class="mt-12 grid gap-6">
+            {{ range $pages }}
+            <a href="{{ .RelPermalink }}" class="block p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-200 dark:border-gray-700">
+                <h2 class="text-xl font-semibold text-gray-900 dark:text-white">{{ .Title }}</h2>
+                {{ with .Params.description }}
+                <p class="mt-2 text-gray-600 dark:text-gray-400">{{ . }}</p>
+                {{ end }}
+            </a>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+</main>
+{{ end }}

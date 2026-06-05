@@ -1,0 +1,46 @@
+{{ define "main" }}
+<main class="px-4 py-12 mx-auto max-w-screen-xl sm:py-16">
+    <article class="mx-auto max-w-3xl">
+        <div class="mb-8">
+            <a href="/projects/" class="text-sm text-primary-600 dark:text-primary-400 hover:underline">&larr; Back to Projects</a>
+        </div>
+
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
+            {{ .Title }}
+        </h1>
+
+        {{ with .Params.description }}
+        <p class="mt-4 text-xl text-gray-600 dark:text-gray-400">{{ . }}</p>
+        {{ end }}
+
+        {{ with .Params.tags }}
+        <div class="mt-4 flex flex-wrap gap-2">
+            {{ range . }}
+            <span class="px-3 py-1 text-sm font-medium text-primary-700 dark:text-primary-300 bg-primary-50 dark:bg-primary-900/30 rounded-full">{{ . }}</span>
+            {{ end }}
+        </div>
+        {{ end }}
+
+        {{ with .Params.image }}
+        <div class="mt-8 overflow-hidden rounded-xl">
+            <img src="{{ . }}" alt="{{ $.Title }}" class="w-full h-auto" />
+        </div>
+        {{ end }}
+
+        {{ with .Params.link }}
+        <div class="mt-6">
+            <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors">
+                View Live Project
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+            </a>
+        </div>
+        {{ end }}
+
+        <div class="mt-8 prose dark:prose-invert prose-2xl">
+            {{ .Content }}
+        </div>
+    </article>
+</main>
+{{ end }}

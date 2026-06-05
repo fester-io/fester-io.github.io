@@ -1,0 +1,66 @@
+{{ define "main" }}
+<main>
+    <!-- Hero Section -->
+    <div class="bg-gray-200 dark:bg-gray-900">
+        <div class="px-4 py-16 mx-auto max-w-screen-xl sm:py-24">
+            <div class="text-center">
+                <p class="text-lg font-medium text-primary-600 dark:text-primary-400">
+                    {{ .Site.Params.hero.greeting }}
+                </p>
+                <h1 class="mt-2 text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-6xl md:text-7xl">
+                    {{ .Site.Params.hero.name }}
+                </h1>
+                <p class="mt-4 text-xl text-gray-700 dark:text-gray-300 sm:text-2xl">
+                    {{ .Site.Params.hero.tagline }}
+                </p>
+                <p class="mx-auto mt-6 max-w-2xl text-lg text-gray-600 dark:text-gray-400">
+                    {{ .Site.Params.hero.description }}
+                </p>
+                <div class="mt-8 flex justify-center gap-4">
+                    <a href="/projects/" class="inline-flex items-center px-6 py-3 text-base font-medium text-white bg-primary-600 rounded-lg hover:bg-primary-700 transition-colors">
+                        View My Work
+                    </a>
+                    <a href="/contact/" class="inline-flex items-center px-6 py-3 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 dark:text-gray-200 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 transition-colors">
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Projects Section -->
+    {{ $projects := where .Site.RegularPages "Section" "projects" }}
+    {{ if $projects }}
+    <div class="px-4 py-16 mx-auto max-w-screen-xl">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Featured Projects</h2>
+            <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">A selection of my recent work</p>
+        </div>
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {{ range first 3 $projects }}
+            <a href="{{ .RelPermalink }}" class="group block overflow-hidden bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-shadow">
+                {{ with .Params.image }}
+                <div class="aspect-video overflow-hidden bg-gray-100 dark:bg-gray-700">
+                    <img src="{{ . }}" alt="{{ $.Title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                </div>
+                {{ end }}
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                        {{ .Title }}
+                    </h3>
+                    {{ with .Params.description }}
+                    <p class="mt-2 text-gray-600 dark:text-gray-400">{{ . }}</p>
+                    {{ end }}
+                </div>
+            </a>
+            {{ end }}
+        </div>
+        <div class="mt-12 text-center">
+            <a href="/projects/" class="text-primary-600 dark:text-primary-400 font-medium hover:underline">
+                View all projects &rarr;
+            </a>
+        </div>
+    </div>
+    {{ end }}
+</main>
+{{ end }}
