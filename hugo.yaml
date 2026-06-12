@@ -35,6 +35,7 @@ params:
   description: "Portfolio website"
   disable_theme_toggle: false
 
+  # Fallback only — edit the homepage hero text in content/_index.md instead
   hero:
     greeting: "Hi, I'm"
     name: "Sakiina"

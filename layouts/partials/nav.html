@@ -1,24 +1,24 @@
-<div class="top-0 z-50 w-full bg-gray-950 border-b border-gray-800 md:sticky">
+<header class="top-0 z-50 w-full bg-white/85 dark:bg-gray-950/85 backdrop-blur border-b border-gray-200 dark:border-gray-800 md:sticky">
     <div x-data="{ open: false }" class="flex flex-col px-4 mx-auto max-w-screen-xl md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
         <div class="flex flex-row justify-between items-center p-4">
-            <a href="/" class="flex items-center text-gray-100 transition duration-300 group hover:text-primary-400">
+            <a href="/" class="flex items-center text-gray-900 dark:text-gray-100 transition duration-300 group hover:text-primary-600 dark:hover:text-primary-400">
                 <span class="text-xl font-bold tracking-tight">{{ .Site.Title }}</span>
             </a>
             <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open" role="button" :aria-expanded="open" aria-label="Toggle navigation menu">
-                <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6 text-gray-200">
+                <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6 text-gray-700 dark:text-gray-200">
                     <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
                     <path x-show="open" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                 </svg>
             </button>
         </div>
-        <nav x-cloak :class="{'flex': open, 'hidden': !open}" class="hidden flex-col flex-grow pb-4 md:pb-0 md:flex md:justify-end md:flex-row">
+        <nav x-cloak :class="{'flex': open, 'hidden': !open}" class="hidden flex-col flex-grow pb-4 md:pb-0 md:flex md:justify-end md:flex-row md:items-center">
             {{ range site.Menus.main }}
-            <a class="px-4 py-2 mt-2 text-sm font-semibold text-gray-200 rounded-lg md:mt-0 md:ml-4 hover:text-white hover:bg-primary-600 focus:bg-primary-700 focus:outline-none focus:shadow-outline transition-colors" href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}">
+            <a class="px-4 py-2 mt-2 text-sm font-semibold text-gray-700 dark:text-gray-200 rounded-lg md:mt-0 md:ml-2 hover:text-primary-600 hover:bg-primary-50 dark:hover:text-primary-300 dark:hover:bg-primary-900/30 focus:outline-none focus:ring-2 focus:ring-primary-400 transition-colors" href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}">
                 {{ .Name }}
             </a>
             {{ end }}
             {{ if not .Site.Params.Disable_theme_toggle }}
-            <button id="theme-toggle" type="button" class="p-2 ml-2 text-sm text-gray-400 rounded-lg hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600">
+            <button id="theme-toggle" type="button" aria-label="Toggle dark mode" class="p-2 mt-2 md:mt-0 md:ml-2 self-start md:self-auto text-sm text-gray-500 dark:text-gray-400 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 dark:focus:ring-gray-600">
                 <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
                 </svg>
@@ -29,4 +29,4 @@
             {{ end }}
         </nav>
     </div>
-</div>
+</header>

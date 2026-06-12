@@ -213,7 +213,8 @@ img[loading="lazy"] {
 
 /* Font family configuration */
 :root {
-  font-family: ui-sans-serif,
+  font-family: "Inter",
+  ui-sans-serif,
   system-ui,
   -apple-system,
   BlinkMacSystemFont,

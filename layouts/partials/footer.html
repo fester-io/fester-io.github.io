@@ -1,8 +1,8 @@
-<footer class="bg-gray-900">
+<footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
     <div class="px-4 py-12 mx-auto max-w-screen-xl">
         <nav class="flex flex-wrap justify-center gap-6" aria-label="Footer">
             {{ range site.Menus.footer }}
-            <a href="{{ .URL | absLangURL }}" class="text-gray-400 hover:text-gray-300 transition-colors">{{ .Name }}</a>
+            <a href="{{ .URL | absLangURL }}" class="text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">{{ .Name }}</a>
             {{ end }}
         </nav>
         <div class="flex justify-center mt-8 space-x-6">
