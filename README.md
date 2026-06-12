@@ -16,7 +16,7 @@ This site works with [Pages CMS](https://pagescms.org), a free visual editor:
 
 1. Go to **https://app.pagescms.org**
 2. Click **Sign in with GitHub** (one-time: allow it to access this repository)
-3. Pick this repository (`portfolio-website`)
+3. Pick this repository (`fester-io.github.io`)
 
 You'll see a friendly editor with your **Projects**, **Homepage**, **About**, **Contact**, and **Resume** pages. You can:
 
