@@ -1,0 +1,129 @@
+# Configuration for Pages CMS (https://pagescms.org)
+# This lets you edit the site through a friendly web interface:
+# go to https://app.pagescms.org, sign in with GitHub, and pick this repository.
+
+media:
+  input: static/images
+  output: /images
+
+content:
+  - name: projects
+    label: Projects
+    type: collection
+    path: content/projects
+    exclude: ["_index.md"]
+    view:
+      fields: [title, description, date]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: description
+        label: Short description (shown on the project card)
+        type: string
+      - name: date
+        label: Date
+        type: date
+      - name: weight
+        label: Display order (1 shows first)
+        type: number
+        default: 10
+      - name: image
+        label: Cover image
+        type: image
+      - name: link
+        label: Link to the live project (optional)
+        type: string
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+      - name: body
+        label: Project write-up
+        type: rich-text
+
+  - name: homepage
+    label: Homepage
+    type: file
+    path: content/_index.md
+    fields:
+      - name: title
+        label: Page title
+        type: string
+      - name: hero
+        label: Hero (the big text at the top of the homepage)
+        type: object
+        fields:
+          - name: greeting
+            label: Greeting (small text above your name)
+            type: string
+          - name: name
+            label: Your name (big headline)
+            type: string
+          - name: tagline
+            label: Tagline (below your name)
+            type: string
+          - name: description
+            label: Short intro paragraph
+            type: text
+
+  - name: about
+    label: About page
+    type: file
+    path: content/about.md
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: description
+        label: Subtitle
+        type: string
+      - name: body
+        label: Page content
+        type: rich-text
+
+  - name: contact
+    label: Contact page
+    type: file
+    path: content/contact.md
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: description
+        label: Subtitle
+        type: string
+      - name: body
+        label: Page content
+        type: rich-text
+
+  - name: resume
+    label: Resume page
+    type: file
+    path: content/resume.md
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: description
+        label: Subtitle
+        type: string
+      - name: body
+        label: Page content
+        type: rich-text
+
+  - name: projects-intro
+    label: Projects page intro
+    type: file
+    path: content/projects/_index.md
+    fields:
+      - name: title
+        label: Title
+        type: string
+      - name: description
+        label: Subtitle
+        type: string
+      - name: body
+        label: Intro text (optional, shown above the project grid)
+        type: rich-text
