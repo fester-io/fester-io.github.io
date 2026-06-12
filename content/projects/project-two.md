@@ -2,6 +2,7 @@
 title: "Project Two"
 description: "Another project showcasing different skills and approaches"
 date: 2026-03-20
+weight: 2
 image: ""
 link: ""
 tags: ["development", "collaboration"]

@@ -2,6 +2,7 @@
 title: "Project One"
 description: "A brief description of this project and what it accomplishes"
 date: 2026-01-15
+weight: 1
 image: ""
 link: ""
 tags: ["design", "creative"]
