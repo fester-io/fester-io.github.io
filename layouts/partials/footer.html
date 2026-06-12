@@ -39,5 +39,3 @@
 {{ $js := resources.Get "js/darkmode.js" | js.Build }}
 <script defer src="{{ $js.RelPermalink }}"></script>
 {{ end }}
-
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js" crossorigin="anonymous"></script>

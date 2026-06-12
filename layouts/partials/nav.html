@@ -1,17 +1,19 @@
 <header class="top-0 z-50 w-full bg-white/85 dark:bg-gray-950/85 backdrop-blur border-b border-gray-200 dark:border-gray-800 md:sticky">
-    <div x-data="{ open: false }" class="flex flex-col px-4 mx-auto max-w-screen-xl md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+    <div class="flex flex-col px-4 mx-auto max-w-screen-xl md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
         <div class="flex flex-row justify-between items-center p-4">
             <a href="/" class="flex items-center text-gray-900 dark:text-gray-100 transition duration-300 group hover:text-primary-600 dark:hover:text-primary-400">
                 <span class="text-xl font-bold tracking-tight">{{ .Site.Title }}</span>
             </a>
-            <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open" role="button" :aria-expanded="open" aria-label="Toggle navigation menu">
-                <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6 text-gray-700 dark:text-gray-200">
-                    <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
-                    <path x-show="open" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            <button id="nav-toggle" type="button" class="rounded-lg md:hidden focus:outline-none focus:ring-2 focus:ring-primary-400" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation menu">
+                <svg id="nav-icon-open" fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6 text-gray-700 dark:text-gray-200">
+                    <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                </svg>
+                <svg id="nav-icon-close" fill="currentColor" viewBox="0 0 20 20" class="hidden w-6 h-6 text-gray-700 dark:text-gray-200">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
                 </svg>
             </button>
         </div>
-        <nav x-cloak :class="{'flex': open, 'hidden': !open}" class="hidden flex-col flex-grow pb-4 md:pb-0 md:flex md:justify-end md:flex-row md:items-center">
+        <nav id="main-nav" class="hidden flex-col flex-grow pb-4 md:pb-0 md:flex md:justify-end md:flex-row md:items-center">
             {{ range site.Menus.main }}
             <a class="px-4 py-2 mt-2 text-sm font-semibold text-gray-700 dark:text-gray-200 rounded-lg md:mt-0 md:ml-2 hover:text-primary-600 hover:bg-primary-50 dark:hover:text-primary-300 dark:hover:bg-primary-900/30 focus:outline-none focus:ring-2 focus:ring-primary-400 transition-colors" href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}">
                 {{ .Name }}
@@ -30,3 +32,15 @@
         </nav>
     </div>
 </header>
+
+<script>
+  document.getElementById('nav-toggle').addEventListener('click', function () {
+    var nav = document.getElementById('main-nav');
+    var expanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', String(!expanded));
+    nav.classList.toggle('hidden');
+    nav.classList.toggle('flex');
+    document.getElementById('nav-icon-open').classList.toggle('hidden');
+    document.getElementById('nav-icon-close').classList.toggle('hidden');
+  });
+</script>
